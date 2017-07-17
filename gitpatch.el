@@ -7,7 +7,7 @@
 ;; Author: Feng Shu <tumashu@163.com>
 ;; Homepage: https://github.com/tumashu/gitpatch
 ;; Keywords: convenience
-;; Package-Requires: ((emacs "24.3")(cl-lib "0.5"))
+;; Package-Requires: ((emacs "24.3"))
 ;; Version: 0.10
 
 ;; This program is free software; you can redistribute it and/or modify
