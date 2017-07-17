@@ -1,26 +1,22 @@
-- [What is gitpatch](#orgc9ade4c)
-    - [\`gitpatch-mail'](#org0f4ad11)
-  - [Installation](#orge9121f5)
-  - [Configure](#orga735c80)
-  - [Usage](#org125d7f5)
-    - [gitpatch-mail](#org1d5f3e5)
+- [What is gitpatch](#org87289be)
+  - [Installation](#org293eba2)
+  - [Configure](#org545133f)
+  - [Usage](#orgb6c8b3d)
+    - [gitpatch-mail](#org9296254)
 
 
-<a id="orgc9ade4c"></a>
+<a id="org87289be"></a>
 
 # What is gitpatch
 
-Utils of git-format patch file, which include the below tools:
+Gitpatch is git-format patch toolkit, which let user easy handle git-format patch without exit emacs.
 
-
-<a id="org0f4ad11"></a>
-
-### \`gitpatch-mail'
+1.  Send patch with \`gitpatch-mail'
 
 \`gitpatch-mail' can quick send a git-format patch file from magit, dired or ibuffer buffer.
 
 
-<a id="orge9121f5"></a>
+<a id="org293eba2"></a>
 
 ## Installation
 
@@ -28,27 +24,27 @@ Utils of git-format patch file, which include the below tools:
 2.  M-x package-install RET gitpatch RET
 
 
-<a id="orga735c80"></a>
+<a id="org545133f"></a>
 
 ## Configure
 
     (require 'gitpatch)
 
 
-<a id="org125d7f5"></a>
+<a id="orgb6c8b3d"></a>
 
 ## Usage
 
 
-<a id="org1d5f3e5"></a>
+<a id="org9296254"></a>
 
 ### gitpatch-mail
 
 1.  Move the point to the patch-name in magit-status, dired or ibuffer buffer.
 2.  M-x gitpatch-mail
 3.  Select an email address as TO Field, if you set \`gitpatch-mail-database'.
-4.  Edit and send email.
-5.  Add another patch with "C-c i" by default (Optional).
+4.  Add another patch with "C-c i" by default (Optional).
+5.  Edit and send email.
 
 NOTE: User can config \`gitpatch-mail' in other type buffer with the help of \`gitpatch-mail-get-patch-functions'
 

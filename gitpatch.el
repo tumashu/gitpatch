@@ -1,4 +1,4 @@
-;;; gitpatch.el --- Utils of Git-format patch file
+;;; gitpatch.el --- Git-format patch toolkit
 
 ;; * Header
 ;; #+BEGIN_EXAMPLE
@@ -27,9 +27,10 @@
 ;;; Commentary:
 
 ;; * What is gitpatch                                      :README:
-;; Utils of git-format patch file, which include the below tools:
+;; Gitpatch is git-format patch toolkit, which let user easy handle
+;; git-format patch without exit emacs.
 
-;; *** `gitpatch-mail'
+;; 1. Send patch with `gitpatch-mail'
 ;; `gitpatch-mail' can quick send a git-format patch file from magit,
 ;; dired or ibuffer buffer.
 
@@ -49,8 +50,8 @@
 ;; 1. Move the point to the patch-name in magit-status, dired or ibuffer buffer.
 ;; 2. M-x gitpatch-mail
 ;; 3. Select an email address as TO Field, if you set `gitpatch-mail-database'.
-;; 4. Edit and send email.
-;; 5. Add another patch with "C-c i" by default (Optional).
+;; 4. Add another patch with "C-c i" by default (Optional).
+;; 5. Edit and send email.
 
 ;; NOTE: User can config `gitpatch-mail' in other type buffer with the help of
 ;; `gitpatch-mail-get-patch-functions'
