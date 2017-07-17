@@ -146,9 +146,8 @@ email address as TO field."
                    (car gitpatch-mail-database)
                  (completing-read "TO: " gitpatch-mail-database)))))
     (when file
-      (with-temp-buffer
-        (funcall gitpatch-mail-function to subject)
-        (mml-attach-file file "text/x-patch" subject "inline")))))
+      (funcall gitpatch-mail-function to subject)
+      (mml-attach-file file "text/x-patch" subject "inline"))))
 
 
 (provide 'gitpatch)
