@@ -111,6 +111,12 @@ this key string should be regognized by `kbd'."
       (message "[Gitpatch]: the selected file is not a patch file."))
     file))
 
+;; Fix compile warn
+(defvar magit--default-directory)
+(declare-function magit-file-at-point "magit-git.el" nil)
+(declare-function dired-file-name-at-point "dired.el" nil)
+(declare-function ibuffer-current-buffer "ibuffer.el" (&optional must-be-live))
+
 (defun gitpatch-mail-get-patch-from-magit ()
   "Get a git-format patch's full path from magit buffer."
   (when (eq major-mode 'magit-status-mode)
