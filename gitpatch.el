@@ -28,7 +28,7 @@
 
 ;; * What is gitpatch                                      :README:
 ;; Gitpatch is git-format patch toolkit, which let user easy handle
-;; git-format patch without exit emacs.
+;; git-format patch without exit Emacs.
 
 ;; 1. Send patch with `gitpatch-mail'
 
@@ -70,8 +70,8 @@
   :group 'applications)
 
 (defcustom gitpatch-mail-function 'message-mail
-  "The function used to compose patch mail, you can
-choose `message-mail' or `gnus-msg-mail'."
+  "The function used to compose patch mail.
+you can choose `message-mail' or `gnus-msg-mail'."
   :group 'gitpatch
   :type 'function)
 
@@ -79,17 +79,15 @@ choose `message-mail' or `gnus-msg-mail'."
   '(gitpatch-mail-get-patch-from-magit
     gitpatch-mail-get-patch-from-dired
     gitpatch-mail-get-patch-from-ibuffer)
-  "A list of function, which used to get git patch
-file's patch."
+  "A list of function, which used to get git patch file's patch."
   :group 'gitpatch)
 
 (defcustom gitpatch-mail-database nil
-  "A list of email address, user can select an
-email address as TO field."
+  "A list of email address, user can select an email address as TO field."
   :group 'gitpatch)
 
 (defcustom gitpatch-mail-attach-patch-key "C-c i"
-  "A key used to attach another patch file to email,
+  "A key used to attach another patch file to email.
 this key string should be regognized by `kbd'."
   :group 'gitpatch
   :type 'string)
@@ -97,7 +95,7 @@ this key string should be regognized by `kbd'."
 (defvar-local gitpatch-mail--patch-directory nil)
 
 (defun gitpatch-mail--patch-file-p (file)
-  "Test a file is a patch file."
+  "Test FILE is a patch file."
   (and file (stringp file)
        (file-readable-p file)
        (string-match-p "\\.patch$" file)))
@@ -147,7 +145,7 @@ this key string should be regognized by `kbd'."
         file))))
 
 (defun gitpatch-mail--extract-subject (patch-file)
-  "Extract subject from git-format patch file."
+  "Extract subject from PATCH-FILE."
   (when (and patch-file
              (stringp patch-file)
              (file-readable-p patch-file))
@@ -160,7 +158,7 @@ this key string should be regognized by `kbd'."
 
 ;;;###autoload
 (defun gitpatch-mail ()
-  "Mail a git-format patch file message-mode or its derived mode."
+  "Mail a git-format patch file ‘message-mode’ or its derived mode."
   (interactive)
   (let* ((file (gitpatch-mail--get-patch-file))
          (subject (gitpatch-mail--extract-subject file))
@@ -180,8 +178,8 @@ this key string should be regognized by `kbd'."
 
 ;;;###autoload
 (defun gitpatch-mail-attach-patch ()
-  "Attach a patch file, which directory is
-`gitpatch-mail--patch-directory'."
+  "Attach a patch file to mail.
+The patch is in directory `gitpatch-mail--patch-directory'."
   (interactive)
   (let* ((dir gitpatch-mail--patch-directory)
          (file (completing-read "[Gitpatch] please select a patch file:"
