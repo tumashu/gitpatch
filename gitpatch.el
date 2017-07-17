@@ -64,8 +64,8 @@
   :group 'applications)
 
 (defcustom gitpatch-mail-function 'message-mail
-  "The function used to compose patch mail, its
-arguments are same as `message-mail'."
+  "The function used to compose patch mail, you can
+choose `message-mail' or `gnus-msg-mail'."
   :group 'gitpatch
   :type 'function)
 
