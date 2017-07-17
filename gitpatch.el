@@ -82,6 +82,8 @@ file's patch."
 email address as TO field."
   :group 'gitpatch)
 
+(defvar-local gitpatch-mail--patch-directory nil)
+
 (defun gitpatch-mail--patch-file-p (file)
   "Test a file is a patch file."
   (and file (stringp file)
@@ -156,7 +158,23 @@ email address as TO field."
                  (completing-read "TO: " gitpatch-mail-database)))))
     (when file
       (funcall gitpatch-mail-function to subject)
-      (mml-attach-file file "text/x-patch" subject "inline"))))
+      (mml-attach-file file "text/x-patch" subject "inline")
+      (setq gitpatch-mail--patch-directory
+            (file-name-directory file))
+      (define-key message-mode-map (kbd "C-c i") 'gitpatch-mail-attach-patch)
+      (setq header-line-format
+            (substitute-command-keys
+             "## Type `\\[gitpatch-mail-attach-patch]' to attach another patch ##")))))
+
+;;;###autoload
+(defun gitpatch-mail-attach-patch ()
+  "Attach a patch file, which directory is
+`gitpatch-mail--patch-directory'."
+  (interactive)
+  (let* ((dir gitpatch-mail--patch-directory)
+         (file (completing-read "[Gitpatch] please select a patch file:"
+                                (directory-files dir t "\\.patch$"))))
+    (mml-attach-file file "text/x-patch" nil "inline")))
 
 
 (provide 'gitpatch)
