@@ -82,6 +82,12 @@ file's patch."
 email address as TO field."
   :group 'gitpatch)
 
+(defcustom gitpatch-mail-attach-patch-key "C-c i"
+  "A key used to attach another patch file to email,
+this key string should be regognized by `kbd'."
+  :group 'gitpatch
+  :type 'string)
+
 (defvar-local gitpatch-mail--patch-directory nil)
 
 (defun gitpatch-mail--patch-file-p (file)
@@ -161,7 +167,7 @@ email address as TO field."
       (mml-attach-file file "text/x-patch" subject "inline")
       (setq gitpatch-mail--patch-directory
             (file-name-directory file))
-      (define-key message-mode-map (kbd "C-c i") 'gitpatch-mail-attach-patch)
+      (define-key message-mode-map (kbd gitpatch-mail-attach-patch-key) 'gitpatch-mail-attach-patch)
       (setq header-line-format
             (substitute-command-keys
              "## Type `\\[gitpatch-mail-attach-patch]' to attach another patch ##")))))
