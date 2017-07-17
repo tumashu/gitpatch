@@ -173,10 +173,10 @@ this key string should be regognized by `kbd'."
       (mml-attach-file file "text/x-patch" subject "inline")
       (setq gitpatch-mail--patch-directory
             (file-name-directory file))
-      (define-key message-mode-map (kbd gitpatch-mail-attach-patch-key) 'gitpatch-mail-attach-patch)
+      (local-set-key (kbd gitpatch-mail-attach-patch-key) 'gitpatch-mail-attach-patch)
       (setq header-line-format
-            (substitute-command-keys
-             "## Type `\\[gitpatch-mail-attach-patch]' to attach another patch ##")))))
+            (format "## Type '%s' to attach another patch ##"
+                    gitpatch-mail-attach-patch-key)))))
 
 ;;;###autoload
 (defun gitpatch-mail-attach-patch ()
