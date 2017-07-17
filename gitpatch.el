@@ -71,7 +71,8 @@ choose `message-mail' or `gnus-msg-mail'."
 
 (defcustom gitpatch-mail-get-patch-functions
   '(gitpatch-mail-get-patch-from-magit
-    gitpatch-mail-get-patch-from-dired)
+    gitpatch-mail-get-patch-from-dired
+    gitpatch-mail-get-patch-from-ibuffer)
   "A list of function, which used to get git patch
 file's patch."
   :group 'gitpatch)
@@ -120,6 +121,14 @@ email address as TO field."
   "Get a git-format patch's full path from dired buffer."
   (when (eq major-mode 'dired-mode)
     (let ((file (dired-file-name-at-point)))
+      (when (gitpatch-mail--patch-file-p file)
+        file))))
+
+(defun gitpatch-mail-get-patch-from-ibuffer ()
+  "Get a git-format patch's full path from ibuffer buffer."
+  (when (eq major-mode 'ibuffer-mode)
+    (let ((file (buffer-file-name (ibuffer-current-buffer))))
+      (princ file)
       (when (gitpatch-mail--patch-file-p file)
         file))))
 
