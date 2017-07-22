@@ -92,7 +92,7 @@ you can choose `message-mail' or `gnus-msg-mail'."
 
 (defcustom gitpatch-mail-attach-patch-key "C-x i"
   "A key used to attach another patch file to email.
-this key string should be regognized by `kbd'."
+this key string should be recognized by `kbd'."
   :group 'gitpatch
   :type 'string)
 
