@@ -73,18 +73,22 @@
   "The function used to compose patch mail.
 you can choose `message-mail' or `gnus-msg-mail'."
   :group 'gitpatch
-  :type 'function)
+  :type '(choice (const :tag "Message-mode" message-mail)
+                 (const :tag "Gnus" gnus-msg-mail)))
 
 (defcustom gitpatch-mail-get-patch-functions
   '(gitpatch-mail-get-patch-from-magit
     gitpatch-mail-get-patch-from-dired
     gitpatch-mail-get-patch-from-ibuffer)
   "A list of function, which used to get git patch file's patch."
-  :group 'gitpatch)
+  :group 'gitpatch
+  :type '(repeat (symbol :tag "Patch-path function")))
 
 (defcustom gitpatch-mail-database nil
   "A list of email address, user can select an email address as TO field."
-  :group 'gitpatch)
+  :group 'gitpatch
+  :type '(choice (const :tag "Disable" nil)
+                 (repeat :tag "Add new email address" string)))
 
 (defcustom gitpatch-mail-attach-patch-key "C-x i"
   "A key used to attach another patch file to email.
