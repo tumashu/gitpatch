@@ -1,22 +1,22 @@
-- [What is gitpatch](#org7b4e9d2)
-  - [Installation](#orgcc361e0)
-  - [Configure](#org75d4c08)
-  - [Usage](#org048fc16)
-    - [gitpatch-mail](#org7fbd457)
+- [What is gitpatch](#org173272d)
+  - [Installation](#org0c24685)
+  - [Configure](#orgeae6b5c)
+  - [Usage](#org852955e)
+    - [gitpatch-mail](#orgcc5adf7)
 
 
-<a id="org7b4e9d2"></a>
+<a id="org173272d"></a>
 
 # What is gitpatch
 
-Gitpatch is git-format patch toolkit, which let user easy handle git-format patch without exit emacs.
+Gitpatch is git-format patch toolkit, which let user easy handle git-format patch without exit Emacs.
 
 1.  Send patch with \`gitpatch-mail'
 
     \`gitpatch-mail' can quick send a git-format patch file from magit, dired or ibuffer buffer.
 
 
-<a id="orgcc361e0"></a>
+<a id="org0c24685"></a>
 
 ## Installation
 
@@ -24,19 +24,20 @@ Gitpatch is git-format patch toolkit, which let user easy handle git-format patc
 2.  M-x package-install RET gitpatch RET
 
 
-<a id="org75d4c08"></a>
+<a id="orgeae6b5c"></a>
 
 ## Configure
 
     (require 'gitpatch)
+    (setq gitpatch-mail-attach-patch-key "C-c i")
 
 
-<a id="org048fc16"></a>
+<a id="org852955e"></a>
 
 ## Usage
 
 
-<a id="org7fbd457"></a>
+<a id="orgcc5adf7"></a>
 
 ### gitpatch-mail
 

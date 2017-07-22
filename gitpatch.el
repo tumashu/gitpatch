@@ -44,6 +44,7 @@
 
 ;; #+BEGIN_EXAMPLE
 ;; (require 'gitpatch)
+;; (setq gitpatch-mail-attach-patch-key "C-c i")
 ;; #+END_EXAMPLE
 
 ;; ** Usage
