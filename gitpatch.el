@@ -90,11 +90,12 @@ you can choose `message-mail' or `gnus-msg-mail'."
   :type '(choice (const :tag "Disable" nil)
                  (repeat :tag "Add new email address" string)))
 
-(defcustom gitpatch-mail-attach-patch-key "C-x i"
+(defcustom gitpatch-mail-attach-patch-key nil
   "A key used to attach another patch file to email.
 this key string should be recognized by `kbd'."
   :group 'gitpatch
-  :type 'string)
+  :type '(choice (const :tag "No keybinding" nil)
+                 (string :tag "Keybinding string")))
 
 (defvar-local gitpatch-mail--patch-directory nil)
 
@@ -181,10 +182,12 @@ this key string should be recognized by `kbd'."
       (mml-attach-file file "text/x-patch" subject "inline")
       (setq gitpatch-mail--patch-directory
             (file-name-directory file))
-      (local-set-key (kbd gitpatch-mail-attach-patch-key) 'gitpatch-mail-attach-patch)
-      (setq header-line-format
-            (format "## Type '%s' to attach another patch ##"
-                    gitpatch-mail-attach-patch-key)))))
+      (when (and gitpatch-mail-attach-patch-key
+                 (stringp gitpatch-mail-attach-patch-key))
+        (local-set-key (kbd gitpatch-mail-attach-patch-key) 'gitpatch-mail-attach-patch)
+        (setq header-line-format
+              (format "## Type '%s' to attach another patch ##"
+                      gitpatch-mail-attach-patch-key))))))
 
 ;;;###autoload
 (defun gitpatch-mail-attach-patch ()
