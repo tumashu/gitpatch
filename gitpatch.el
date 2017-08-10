@@ -8,7 +8,7 @@
 ;; Homepage: https://github.com/tumashu/gitpatch
 ;; Keywords: convenience
 ;; Package-Requires: ((emacs "24.3"))
-;; Version: 0.10
+;; Version: 0.5.1
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
